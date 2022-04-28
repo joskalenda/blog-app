@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Users controller", :type => :request do
 
   it 'should return 200 response' do
-    get "/users"
+    get users_path
     expect(response).to have_http_status(200)
   end
 
@@ -24,5 +24,4 @@ RSpec.describe "Users controller", :type => :request do
     expect(response).to have_http_status(200)
     expect(response).to render_template(:show)
   end
-
 end
