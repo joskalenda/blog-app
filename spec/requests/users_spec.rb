@@ -18,4 +18,11 @@ RSpec.describe "Users controller", :type => :request do
     expect(response).to_not render_template(:show)
   end
 
+  it "Should test for single user status" do
+    get "/users/0"
+    expect(response.body).to include("ONE SINGLE USER")
+    expect(response).to have_http_status(200)
+    expect(response).to render_template(:show)
+  end
+
 end
