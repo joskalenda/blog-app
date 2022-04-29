@@ -62,21 +62,15 @@ $  rails generate rspec:install
 $  rspec spec     # to test if your tests are passed
 ```
 
-#### Generate migration files
+#### Generate controllers
 
 ```bash
-  $  rails generate migration CreateUsers
-  $  rails generate migration CreatePosts
-  $  rails generate migration CreateLikes
-  $  rails generate migration CreateComments
-  $  rails generate migration AddUserRefToComments
-  $  rails generate migration AddPostRefToComments
-  $  rails generate migration AddUserRefToLikes
-  $  rails generate migration AddPostRefToLikes
-  $  rails generate migration AddUserRefToPosts
+  $  rails generate controller home index show
+  $  rails generate controller users index show
+  $  rails generate controller posts index show
 ```
 
-#### Generate model
+#### Generate model and migration files
 
 ```bash
   $  rails generate model User name  photo bio:text posts_counter:integer  
@@ -86,30 +80,12 @@ $  rspec spec     # to test if your tests are passed
 ```
 
 
-#### Generate controllers
-
-```bash
-  $  rails generate controller users index show
-  $  rails generate controller posts index show
-```
 #### Generate Schema
 
 - To push the Migration into the database
 
 ```bash
   $   rails db:migrate
-```
-- We use the seeds.rb file to records in the database
-- To drop, create a table and to migrate and send the seed into the database:
-
-```bash
-  $   rails db:drop db:create db:migrate db:seed  
-```
-
-- To check available routes
-
-```bash
-  $   rails routes  
 ```
 
 ## Authors
