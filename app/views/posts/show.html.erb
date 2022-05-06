@@ -1,1 +1,17 @@
-<h1>THIS SINGLE USER SELECTED POST</h1>
+
+<ul class="singleUserOnePost">
+  <h1>Selected post</h1>
+  <div class="singlePost">
+    <h4><%= @post.title %></h4>
+    <p><%= @post.text %></p>
+  </div>
+
+  <div class="singleComment">
+    <h4>Comments:</h4>
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <p><%= comment.user.name %>: <%= comment.text %></p>
+      <% end %>
+    </ul>
+  </div>
+</ul> 
