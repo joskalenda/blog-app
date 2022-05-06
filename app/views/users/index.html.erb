@@ -1,1 +1,15 @@
-<h1>ALL USERS</h1>
+
+<ul class="userProfile">
+  <h2>Active Users</h1>
+  <% @users.each do |user|%>
+    <%= link_to user do %>
+      <ul class="User">
+        <li class="userImage">
+          <img src=<%= user.photo %> alt="UserImage">
+        </li>
+        <li class="userName"><%= user.name %></li>
+        <li class="userNumberOfposts">Post:<%= user.posts_counter %></li>
+      </ul>
+      <% end %>
+  <% end %>
+</ul>

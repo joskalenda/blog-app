@@ -1,5 +1,42 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'Should not create post if user not provided' do
+    post = Post.new(title: 'this is the title', text: 'this is a new post', comments_counter: 0, likes_counter: 0)
+    expect(post).to be_invalid
+  end
+
+  it 'Should create a post if user provided' do
+    post = Post.new(title: 'this is a title', text: 'this is a new post', comments_counter: 0, likes_counter: 0)
+    post.build_user(name: 'Marcelo', photo: '', bio: 'football player', posts_counter: 0)
+    expect(post).to be_valid
+  end
+
+  it 'Should increment posts_counter' do
+    user = User.new(name: 'Michael', photo: '', bio: '', posts_counter: 0)
+    expect(user).to be_valid
+    Post.create!(title: 'Post 1ere', text: 'this is my post', comments_counter: 0, likes_counter: 0, user: user)
+    Post.create!(title: 'Second Post', text: 'this is my post', comments_counter: 0, likes_counter: 0, user: user)
+    Post.create!(title: 'Third Post', text: 'this is my post', comments_counter: 0, likes_counter: 0, user: user)
+    Post.create!(title: 'Fourth Post', text: 'this is my post', comments_counter: 0, likes_counter: 0, user: user)
+    expect(user.posts_counter).to eql(4)
+  end
+
+  it 'Should return top 5 comments' do
+    post = Post.new(title: 'My Post', text: 'this is a post', comments_counter: 0, likes_counter: 0)
+    post.build_user(name: 'Michelle', photo: '', bio: '', posts_counter: 0)
+    post.save!
+    comment_creator = User.new(name: 'Cynthia', photo: '', bio: '', posts_counter: 0)
+    expect(comment_creator).to be_valid
+    post.comments.create(text: 'this is a comment1', user: comment_creator)
+    comment1 = post.comments.create(text: 'this is a comment1', user: comment_creator)
+    comment2 = post.comments.create(text: 'this is a comment2', user: comment_creator)
+    comment3 = post.comments.create(text: 'this is a comment3', user: comment_creator)
+    comment4 = post.comments.create(text: 'this is a comment4', user: comment_creator)
+    comment5 = post.comments.create(text: 'this is a comment5', user: comment_creator)
+
+    recent_five_comments = post.latest_five_comment
+    expect(recent_five_comments.length).to eql(5)
+    expect(recent_five_comments).to match_array([comment1, comment2, comment3, comment4, comment5])
+  end
 end
