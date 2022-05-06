@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  validates_presence_of :name
   has_many :posts, foreign_key: 'user_id', dependent: :destroy
   has_many :comments, foreign_key: 'user_id', dependent: :destroy
   has_many :likes, foreign_key: 'user_id', dependent: :destroy
