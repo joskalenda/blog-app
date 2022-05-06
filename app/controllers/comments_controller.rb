@@ -11,8 +11,10 @@ class CommentsController < ApplicationController
 
     if @comment.save
       redirect_to user_post_path(user_id: @post.user_id, id: @post.id)
+      flash[:notice] = "Thanks for your comment!"
     else
-      render :new
+      render :new 
+      flash[:notice] = "Comment not submitted!"
     end
   end
 
