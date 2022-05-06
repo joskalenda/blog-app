@@ -13,7 +13,7 @@ image2 = 'https://media.istockphoto.com/photos/road-picture-id467172076?s=612x61
 image3 = 'https://media.istockphoto.com/photos/road-picture-id467172076?s=612x612'
 image4 = 'https://media.istockphoto.com/photos/road-picture-id467172076?s=612x612'
 
-jos = User.create!(name: 'Max', photo: image2 , bio: lorem40, posts_counter: 0)
+jos = User.create!(name: 'Maxim', photo: image2 , bio: lorem40, posts_counter: 0)
 topaz = User.create!(name: 'Neutral', photo: image3, bio: lorem40, posts_counter: 0)
 karis = User.create!(name: 'Ben', photo: image4 , bio: lorem40, posts_counter: 0)
 betty = User.create!(name: 'Jemi', photo: image1 , bio: lorem40, posts_counter: 0)

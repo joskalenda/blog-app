@@ -28,7 +28,7 @@
           <div class="singleComment">
             <h4>Comments:</h4>
             <ul>
-              <% post.latest_five_comment.each do |comment| %>
+              <% post.latest_five_comment.includes(:user).each do |comment| %>
                 <p><%= comment.user.name %>: <%= comment.text %></p>
               <% end %>
             </ul>
