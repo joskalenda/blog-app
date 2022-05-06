@@ -30,3 +30,5 @@ karis.comments.create!(text: 'Love 💓 it!!!', post: post1)
 topaz.comments.create!(text: 'Love 💕 it Aswell !!!', post: post4)
 jos.comments.create!(text: 'This is a terific post ', post: post4)
 jos.comments.create!(text: 'We still need one more post😢', post: post3)
+
+# User.destroy_all
