@@ -1,18 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  it 'Should add some likes to posts and comments' do
-    like = Like.new
-    like.build_user(name: 'Kalenda')
-    like.build_post(text: 'Happy')
-    expect(like).to be_valid
-  end
+  describe 'Validations For the Like model' do
+    before(:each) do
+      @user = User.create(name: 'Nuri', photo: 'image_link', bio: 'Developer from Macedonia')
+      @post = Post.create(user: @user, title: 'My title', text: 'My text')
+      @like = Like.create(user: @user, post_id: @post.id)
+    end
 
-  it 'Should increment likes_counter' do
-    user = User.new(name: 'Topaz')
-    user2 = User.create!(name: 'Mercure')
-    post = user2.posts.create!(title: 'Enjoy coding book', text: 'Learn how to code')
-    post.likes.create!(user: user)
-    expect(post.likes_counter).to eql(1)
+    it 'Should check if post id is nil' do
+      @like.post_id = nil
+      expect(@like).to_not be_valid
+    end
+
+    it 'Should check if user id is wrong' do
+      @like.user_id = false
+      expect(@like).to_not be_valid
+    end
+
+    it 'Should check if like length is 0' do
+      expect(@post.likes.length).to eq 0
+    end
   end
 end

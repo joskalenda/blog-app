@@ -39,4 +39,36 @@ RSpec.describe Post, type: :model do
     expect(recent_five_comments.length).to eql(5)
     expect(recent_five_comments).to match_array([comment1, comment2, comment3, comment4, comment5])
   end
+
+  describe 'For the Post model' do
+    before(:each) do
+      @user = User.new(name: 'XXX', photo: 'XXXX', bio: 'XXXXXX')
+      @post = Post.new(user: @user, title: 'XXXX', text: 'XXXXXXX')
+    end
+
+    it 'if there is title' do
+      @post.title = nil
+      expect(@post).to be_invalid
+    end
+
+    it 'if likes counter is integer' do
+      @post.likes_counter = 'string'
+      expect(@post).to be_invalid
+    end
+
+    it 'if likes counter greater than or equal to zero' do
+      @post.likes_counter = -25
+      expect(@post).to be_invalid
+    end
+
+    it 'if comments counter greater than or equal to zero.' do
+      @post.comments_counter = -2
+      expect(@post).to be_invalid
+    end
+
+    it 'if comments counter is integer' do
+      @post.comments_counter = 0.25
+      expect(@post).to be_invalid
+    end
+  end
 end
