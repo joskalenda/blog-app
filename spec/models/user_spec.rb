@@ -8,15 +8,25 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
-  it 'tests that the first_three method works correctly' do
-    user = User.create!(name: 'Sarah', photo: '', bio: '', posts_counter: 0)
-    user.posts.create(title: 'Post 1', text: 'This is my first post')
-    user.posts.create(title: 'Post 2', text: 'This is my second post')
-    user.posts.create(title: 'Post 3', text: 'This is my third post')
-    user.posts.create(title: 'Post 4', text: 'This is my fourth post')
-    user.posts.create(title: 'Post 5', text: 'This is my fifth post')
-    expect(user.posts.length).to eql(5)
-    recent_three_posts = user.latest_three_post
-    expect(recent_three_posts.length).to eql(3)
+  describe 'User model' do
+    before(:each) do
+      @user = User.new(name: 'XXXX', photo: 'XXXXXX', bio: 'XXXXX')
+    end
+
+    before { @user.save }
+
+    it 'Should check if counter in intrger' do
+      @user.posts_counter = 'hello'
+      expect(@user).to be_invalid
+    end
+
+    it 'Shoud check if name id given' do
+      @user.name = nil
+      expect(@user).to be_invalid
+    end
+
+    it 'Should return 0 for recents posts' do
+      expect(@user.latest_three_post.length).to eq 0
+    end
   end
 end

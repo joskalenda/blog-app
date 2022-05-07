@@ -1,14 +1,25 @@
 require 'rails_helper'
-
 RSpec.describe Comment, type: :model do
-  it 'Should create comment' do
-    user = User.new(name: 'Jos', photo: '', bio: 'Developer', posts_counter: 0)
-    post = Post.new(title: 'Coding war', text: 'Learn how to code', user: user)
-    post.save!
+  describe 'Validations For the Comment model' do
+    before(:each) do
+      @user = User.new(name: 'XXX', photo: 'XXX', bio: 'Developer from Macedonia')
+      @post = Post.new(user: @user, title: 'XXX', text: 'XXX')
+      @comment = Comment.new(text: 'First comment', user_id: @user.id, post_id: @post.id)
+    end
 
-    comment_creator = User.new(name: 'Ben', photo: '', bio: 'Fan', posts_counter: 0)
-    post.comments.create!(text: 'i love coding, thanks Jos', user: comment_creator)
-    post.comments.create!(text: 'Would you like to share some?', user: comment_creator)
-    expect(post.comments.length).to eql(2)
+    it 'Should check if comment title is given' do
+      @comment.text = nil
+      expect(@comment).to_not be_valid
+    end
+
+    it 'Should check if user is a integer or not' do
+      @comment.user_id = 'string'
+      expect(@comment).to_not be_valid
+    end
+
+    it 'Should check if post is a integer or not' do
+      @comment.post_id = 'string'
+      expect(@comment).to_not be_valid
+    end
   end
 end

@@ -139,3 +139,8 @@ a {
   padding: 3px;
   background: none;
 }
+
+.bg-green {
+  background: #0d7d4d;
+  color: #f1ecea;
+}
