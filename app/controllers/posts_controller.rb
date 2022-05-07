@@ -19,10 +19,10 @@ class PostsController < ApplicationController
 
     if @post.save
       redirect_to user_path(id: @post.user_id)
-      flash[:notice] = "Posted successfully!"
+      flash[:notice] = 'Posted successfully!'
     else
       render :new
-      flash[:notice] = "Post not submitted"
+      flash[:notice] = 'Post not submitted'
     end
   end
 

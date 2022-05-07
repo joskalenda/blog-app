@@ -15,12 +15,11 @@ RSpec.describe User, type: :model do
 
     before { @user.save }
 
-    
     it 'Should check if counter in intrger' do
       @user.posts_counter = 'hello'
       expect(@user).to be_invalid
     end
-    
+
     it 'Shoud check if name id given' do
       @user.name = nil
       expect(@user).to be_invalid
