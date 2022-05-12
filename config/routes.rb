@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users
   get 'comments/new'
   get 'likes/index'
   get 'likes/show'
@@ -10,5 +11,6 @@ Rails.application.routes.draw do
       resources :likes, only: [:new, :create]
     end
   end
-  root 'home#index'
+  # root 'home#index'
+  root to: "home#index"
 end
