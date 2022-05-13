@@ -33,13 +33,13 @@ image4 = 'https://media.istockphoto.com/photos/road-picture-id467172076?s=612x61
 
 User.destroy_all
 
-# lorem_one = '_One_Donec dapibus consequat tellus a pulvinar. Fusce auctor rhoncus orci a semper. Sed interdum accumsan
-#   esse quia in corrupti doloremque laborum, omnis quae placeat facere aliquid amet excepturiquia in corrupti'
+lorem_one = '_One_Donec dapibus consequat tellus a pulvinar. Fusce auctor rhoncus orci a semper. Sed interdum accumsan
+  esse quia in corrupti doloremque laborum, omnis quae placeat facere aliquid amet excepturiquia in corrupti'
 
-# user1 = User.create!(name: 'John Doe', photo: image1, bio: lorem_one, posts_counter: 0,
-# email: 'joe@mail.com', password: '123456')
-# user2 = User.create!(name: 'Michal Smith ', photo: image2, bio: lorem_one, posts_counter: 0,
-#   email: 'michal@mail.com', password: '123456')
+user1 = User.create!(name: 'John Doe', photo: image1, bio: lorem_one, posts_counter: 0,
+email: 'joe@mail.com', password: '123456', role: 'admin')
+user2 = User.create!(name: 'Michal Smith ', photo: image2, bio: lorem_one, posts_counter: 0,
+  email: 'michal@mail.com', password: '123456', role: '')
 # user3 = User.create!(name: 'Julia Lisa', photo: image3, bio: lorem_one, posts_counter: 0,
 #   email: 'julia@mail.com', password: '123456')
 # user4 = User.create!(name: 'Gomez lucky', photo: image4, bio: lorem_one, posts_counter: 0,
