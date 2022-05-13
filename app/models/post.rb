@@ -18,5 +18,11 @@ class Post < ApplicationRecord
     user.increment!(:posts_counter)
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_posts_path(params[:user_id])
+  end
+
   private :increment_posts_counter
 end
