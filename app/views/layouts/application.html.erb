@@ -12,9 +12,11 @@
 
   <body>
   <%= render partial: 'layouts/navbar' %>
-    <% flash.each do |name, msg| -%>
-      <p class="bg-green"><%= msg %></p>
-    <% end -%>
+  <% if notice %> 
+  <p class="notice alert alert-success"><%= notice %></p>
+	<% elsif alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
     <%= yield %>
   </body>
 </html>

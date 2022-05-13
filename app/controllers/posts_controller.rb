@@ -22,7 +22,7 @@ class PostsController < ApplicationController
       flash[:notice] = 'Posted successfully!'
     else
       render :new
-      flash[:notice] = 'Post not submitted'
+      flash[:alert] = 'Post not submitted'
     end
   end
 
