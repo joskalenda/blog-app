@@ -13,8 +13,8 @@ class Ability
       can :read, Comment
       can :read, User
       can :read, Like
-      can :destroy, Post, author_id: user.id
-      can :destroy, Comment, author_id: user.id
+      can :destroy, Post, user_id: user.id
+      can :destroy, Comment, user_id: user.id
     end
     #
     # The first argument to `can` is the action you are giving the user
