@@ -8,11 +8,5 @@ class Comment < ApplicationRecord
     post.increment!(:comments_counter)
   end
 
-  def destroy
-    @comment = Comment.find(param[:id])
-    @comment.destroy
-    redirect_to user_post_path(params[:user_id), params[:post_id])
-  end
-
   private :increment_comments_counter
 end
