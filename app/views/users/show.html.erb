@@ -19,6 +19,7 @@
     <% @user.latest_three_post.each do |post| %>
       <%= link_to user_post_path(user_id: post.user_id, id: post.id) do %>
         <ul class="ul--post">
+        
           <li class="li--post">
             <h4><%= post.title%></h4>
             <h4><%= post.text%></h4>
