@@ -22,8 +22,8 @@ RSpec.describe 'Blog app', type: :feature do
     end
 
     it 'Should see the number of posts the user has written' do
-        posts = page.all(class: 'singlePot')
-        expect(posts.length).to be 1
+      posts = page.all(class: 'singlePot')
+      expect(posts.length).to be 1
     end
 
     it 'Should  see a post\'s title' do

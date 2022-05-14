@@ -14,14 +14,13 @@ RSpec.describe 'Blog app', type: :feature do
       expect(images).to be true
     end
 
-
     it 'Should see the username of the user' do
       expect(page).to have_content(@user1.name)
     end
 
     it "Should see each user's post number" do
       number_posts = page.all('ul li')
-      expect(number_posts[2]).to have_content("Post:1")
+      expect(number_posts[2]).to have_content('Post:1')
     end
 
     it "Should see the user's bio" do
@@ -38,7 +37,5 @@ RSpec.describe 'Blog app', type: :feature do
       click_link 'Sample'
       expect(page).to have_current_path(user_post_path(@user1, @post))
     end
-
-
   end
 end
